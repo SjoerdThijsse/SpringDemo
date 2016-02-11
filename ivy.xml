@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
+
+	<info organisation="org.apache" module="WebProject" />
+	
+	<!-- Classpath management, thanks Maven -->
+	<configurations>
+        <conf name="compile" description="compile dependencies"/>
+        <conf name="runtime" description="runtime dependencies" extends="compile"/>
+        <conf name="test"    description="test dependencies" extends="runtime"/>
+    </configurations>
+    
+	<dependencies>
+		<dependency org="org.springframework" name="spring-core" rev="4.2.4.RELEASE" conf="compile->default"/>
+		<dependency org="org.springframework" name="spring-beans" rev="4.2.4.RELEASE" conf="compile->default"/>
+		<dependency org="org.springframework" name="spring-context" rev="4.2.4.RELEASE" conf="compile->default"/>
+		<dependency org="org.springframework" name="spring-web" rev="4.2.4.RELEASE" conf="compile->default"/>
+		<dependency org="org.springframework" name="spring-webmvc" rev="4.2.4.RELEASE" conf="compile->default"/>
+		<dependency org="org.springframework" name="spring-tx" rev="4.2.4.RELEASE" conf="compile->default"/>
+	</dependencies>
+</ivy-module>
