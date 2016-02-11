@@ -10,7 +10,7 @@
     <property name="src.dir" location="src"/>
     <property name="web.dir" value="WebContent"/>
     <property name="web.classes.dir" location="${web.dir}/WEB-INF/classes"/>
-    <property name="resources.dir" location="${web.dir}/WEB-INF/resources"/>
+    <property name="config.dir" location="conf"/>
     <property name="target.dir" location="build"/>
     <property name="target.temp.dir" location="build/temp"/>
     <property name="lib.dir" value="lib"/>
@@ -43,9 +43,9 @@
     </target>
 
     <!-- Copy *.xml or *.properties from ${resources.dir} to ${web.classes.dir} -->
-    <target name="copy-resources" description="copy Java resources like xml and properties files">
+    <target name="copy-config" description="copy Java resources like xml and properties files">
         <copy todir="${web.classes.dir}">
-            <fileset dir="${resources.dir}">
+            <fileset dir="${config.dir}">
                 <include name="**/*.xml"/>
                 <include name="**/*.properties"/>
             </fileset>
@@ -70,7 +70,7 @@
     </target>
 
     <!-- Create the final WAR file for deployment -->
-    <target name="package" depends="clean, compile, copy-resources" description="create a war file">
+    <target name="package" depends="clean, compile, copy-config" description="create a war file">
         <!-- ivy get dependencies and put it in ${lib.dir} -->
         <ivy:retrieve pattern="${lib.dir}/[artifact]-[revision].[ext]" conf="runtime"/>
         <war destfile="${target.dir}/nl.naturalis.springdemo.war" webxml="${web.dir}/WEB-INF/web.xml">
