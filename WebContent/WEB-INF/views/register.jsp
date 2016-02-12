@@ -1,22 +1,25 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <link href="/resources/css/core.css" rel="stylesheet">
+    <title>Register</title>
 </head>
 <body>
-<h1>Ant + Spring MVC Web Project Example</h1>
+<h1>Register</h1>
 
-<p>Hello ${name}</p>
-
-<form action="<c:url value="/buttons" />" method="GET">
-    <input type="submit" name="action" value="Henk" />
-    <input type="submit" name="action"  value="Jan" />
-</form>
 <br/>
-<form action="<c:url value="/input" />" method="GET">
-    First name: <input type="text" name="fname"><br/>
-    Last name: <input type="text" name="lname"><br/>
-    <input type="submit" name="action" value="Submit">
+<form action="<c:url value="/register/" />" method="POST">
+    <label>${error}</label><br/>
+    Username: <input type="text" name="username"><br/>
+    Password: <input type="password" name="password"><br/>
+    Again password: <input type="password" name="passwordAgain"><br/>
+    Email: <input type="text" name="email"><br/>
+    <input type="submit" name="register" value="Register">
+
+</form>
+
+<br/>
+<form action="<c:url value="/login/" />" method="GET">
+    <input type="submit" name="back" value="Back">
 </form>
 </body>
 </html>

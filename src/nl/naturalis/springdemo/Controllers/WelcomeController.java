@@ -1,22 +1,13 @@
 package nl.naturalis.springdemo.Controllers;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Controller
 @RequestMapping(value = "/welcome")
 public class WelcomeController {
 
-    private static final Logger logger = LoggerFactory.getLogger(WelcomeController.class);
+    /*private static final Logger logger = LoggerFactory.getLogger(WelcomeController.class);
 
     private static final String VIEW_INDEX = "welcome";
 
@@ -29,7 +20,7 @@ public class WelcomeController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(ModelMap model, Map<String, String> attributes) {
-        logger.info("welcome");
+        logger.info(VIEW_INDEX);
         return VIEW_INDEX;
     }
 
@@ -70,6 +61,6 @@ public class WelcomeController {
             e.printStackTrace();
         }
         return VIEW_INDEX;
-    }
+    }*/
 
 }

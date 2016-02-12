@@ -1,7 +1,5 @@
 package nl.naturalis.springdemo.Models;
 
-import org.springframework.context.annotation.Bean;
-
 /**
  * Created by sjoerd.thijsse on 11/02/2016.
  */
@@ -11,13 +9,21 @@ public class User {
     private String username;
     private String password;
     private String email;
-    // private Address address;
 
     public User(int userId, String username, String password, String email) {
         this.userId = userId;
         this.username = username;
         this.password = password;
         this.email = email;
+    }
+
+    public User(String username, String password, String email) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
+
+    public User() {
     }
 
     public int getUserId() {
@@ -61,4 +67,5 @@ public class User {
                 ", email='" + email + '\'' +
                 '}';
     }
+
 }

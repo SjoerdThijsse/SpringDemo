@@ -7,13 +7,28 @@ import java.sql.*;
  */
 public class MySQLConnector {
 
-    private static Connection connection = null;
+    private Connection connection = null;
 
-    private final static String DB_URL = "";
-    private final static String USERNAME  = "";
-    private final static String PASSWORD  = "";
+    private final static String DB_URL = "jdbc:mysql://localhost:3306/springdemo";
+    private final static String USERNAME  = "sjoerd";
+    private final static String PASSWORD  = "sjoerd";
 
-    public static Connection connect() {
+    private static MySQLConnector instance = null;
+
+    protected final static int  MYSQL_DUPLICATE_CODE = 1062;
+
+    private MySQLConnector() {
+        connection = connect();
+    }
+
+    public static MySQLConnector getInstance() {
+        if (instance == null) {
+            instance = new MySQLConnector();
+        }
+        return instance;
+    }
+
+    private Connection connect() {
         try {
             connection = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
         } catch (SQLException e) {
@@ -22,4 +37,7 @@ public class MySQLConnector {
         return connection;
     }
 
+    public Connection getConnection() {
+        return connection;
+    }
 }
