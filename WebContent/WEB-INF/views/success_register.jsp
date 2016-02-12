@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Register</title>
+    <meta http-equiv="Refresh" content="3; url=/nl.naturalis.springdemo/login/" />
 </head>
 <body>
 <h1>Register was successful!</h1>
