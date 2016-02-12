@@ -1,6 +1,8 @@
 package nl.naturalis.springdemo.DatabaseControllers;
 
 import nl.naturalis.springdemo.Models.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,6 +14,8 @@ import java.util.List;
  * Created by sjoerd.thijsse on 11/02/2016.
  */
 public class UserDao {
+
+    private static final Logger logger = LoggerFactory.getLogger(UserDao.class);
 
     private final static String TABLE_NAME = "user";
 
@@ -107,7 +111,7 @@ public class UserDao {
             return statement.executeUpdate();
         } catch (SQLException e) {
             if(e.getErrorCode() == MySQLConnector.MYSQL_DUPLICATE_CODE){
-                // logger.info("Duplicate key error")
+                logger.info("Duplicate key error: " + user.toString());
                 return -1;
             } else {
                 e.printStackTrace();

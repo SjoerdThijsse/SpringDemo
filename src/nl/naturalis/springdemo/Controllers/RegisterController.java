@@ -20,54 +20,33 @@ public class RegisterController {
     private static final Logger logger = LoggerFactory.getLogger(RegisterController.class);
 
     protected static final String VIEW_REGISTER = "register";
+    private static final String VIEW_REGISTER_SUCCESS = "register_success";
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String index(ModelMap model) {
+    public String index() {
         logger.info(VIEW_REGISTER);
         return VIEW_REGISTER;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
-    public String register(@RequestParam String username, @RequestParam String password,
-                           @RequestParam String passwordAgain, @RequestParam String email, ModelMap model) {
-        if (username.isEmpty() || password.isEmpty() || passwordAgain.isEmpty() || email.isEmpty()) {
-            badRegister(model, "error", "Some field(s) are not filled.");
+
+    @RequestMapping(value = "/success/", method = RequestMethod.POST)
+    public String success(@RequestParam String username, @RequestParam String password,
+                          @RequestParam String passwordAgain, @RequestParam String email, ModelMap model) {
+        if(username.isEmpty() || password.isEmpty() || passwordAgain.isEmpty() || email.isEmpty()) {
+            model.addAttribute("error", "Not all fields are filled!");
+        } else if(!password.equals(passwordAgain)) {
+            model.addAttribute("error", "Passwords do not match!");
         } else {
-            if(password.equals(passwordAgain)) {
-                return okRegister(model, username, password, email);
+            User user = new User(username, password, email);
+            if(UserDao.getInstance().insert(user) > 0) {
+                return VIEW_REGISTER_SUCCESS;
             } else {
-                badRegister(model, "error", "Passwords don't match!");
+                model.addAttribute("error", "Username already exists!");
             }
         }
         return VIEW_REGISTER;
     }
 
-    private void badRegister(ModelMap model, String key, String value) {
-        model.addAttribute(key, value);
-        logger.info(value);
-    }
 
-    private String okRegister(ModelMap model, String username, String password, String email) {
-        User user = new User(username, password, email);
-        int rows = UserDao.getInstance().insert(user);
-        if(rows > 0) {
-            logger.info(Integer.toString(rows));
-            return "success_register";
-        } else {
-            badRegister(model, "error", "Error username '" + username + "' already exists.");
-        }
-        return VIEW_REGISTER;
-    }
-
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String back() {
-        logger.info(LoginController.VIEW_LOGIN);
-        return LoginController.VIEW_LOGIN;
-    }
-
-    @RequestMapping(value = "/success", method = RequestMethod.GET)
-    public String successful() {
-        return back();
-    }
 
 }
