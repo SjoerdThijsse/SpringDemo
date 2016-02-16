@@ -14,10 +14,6 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <!--<bean id="user" class="nl.naturalis.springdemo.Models.User">-->
-        <!--<property name="user" value="User"/>-->
-    <!--</bean>-->
-
     <tx:annotation-driven/>
 
 </beans>

@@ -22,7 +22,7 @@ public class RegisterController {
     protected static final String VIEW_REGISTER = "register";
     private static final String VIEW_REGISTER_SUCCESS = "register_success";
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public String index() {
         logger.info(VIEW_REGISTER);
         return VIEW_REGISTER;

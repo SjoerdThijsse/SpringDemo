@@ -7,7 +7,7 @@
 <h1>Login</h1>
 
 <p><label>${error}</label></p>
-<form action="${pageContext.request.contextPath}/login/" th:action="@{/login/}" method="post">
+<form id="FORM_LOGIN_FILTER" action="${pageContext.request.contextPath}/login/" th:action="@{/login/}" method="post">
     <p>Username: <input type="text" name="username"><br/></p>
     <p>Password: <input type="password" name="password"><br/></p>
 
