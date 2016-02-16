@@ -1,9 +1,0 @@
-<html>
-<head>
-    <title>Welcome ${username}</title>
-</head>
-<body>
-<h1>Welcome ${username}</h1>
-
-</body>
-</html>

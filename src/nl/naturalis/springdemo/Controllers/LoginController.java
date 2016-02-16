@@ -21,22 +21,21 @@ public class LoginController {
     private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     protected static final String VIEW_LOGIN = "login";
+    private static final String VIEW_LOGIN_SUCCESS = "login_success";
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String index(ModelMap model) {
+    public String index() {
         logger.info(VIEW_LOGIN);
-
         return VIEW_LOGIN;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public String index(@RequestParam String username, @RequestParam String password,
-                        ModelMap model) {
+    public String index(@RequestParam String username, @RequestParam String password, ModelMap model) {
         if (!username.isEmpty() && !password.isEmpty()) {
             User user = UserDao.getInstance().get(username, password);
             if (user != null) {
                 model.addAttribute("username", user.getUsername());
-                return WelcomeController.VIEW_WELCOME;
+                return "redirect:/" + HomeController.VIEW_HOME + "/" + user.getUserId() + "/";
             }
         }
         model.addAttribute("error", "Please check your username and/or password.");

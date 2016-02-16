@@ -28,7 +28,6 @@ public class RegisterController {
         return VIEW_REGISTER;
     }
 
-
     @RequestMapping(value = "/success/", method = RequestMethod.POST)
     public String success(@RequestParam String username, @RequestParam String password,
                           @RequestParam String passwordAgain, @RequestParam String email, ModelMap model) {
@@ -46,7 +45,5 @@ public class RegisterController {
         }
         return VIEW_REGISTER;
     }
-
-
 
 }
