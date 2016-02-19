@@ -1,24 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
+            xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
 
-	<info organisation="org.apache" module="WebProject" />
-	
-	<!-- Classpath management, thanks Maven -->
-	<configurations>
+    <info organisation="org.apache" module="WebProject"/>
+
+    <!-- Classpath management, thanks Maven -->
+    <configurations>
         <conf name="compile" description="compile dependencies"/>
         <conf name="runtime" description="runtime dependencies" extends="compile"/>
-        <conf name="test"    description="test dependencies" extends="runtime"/>
+        <conf name="test" description="test dependencies" extends="runtime"/>
     </configurations>
-    
-	<dependencies>
-		<dependency org="org.slf4j" name="slf4j-api" rev="1.7.10" conf="compile->default"/>
-		<dependency org="ch.qos.logback" name="logback-classic" rev="1.1.2" conf="compile->default"/>
-		<dependency org="org.springframework" name="spring-beans" rev="4.2.4.RELEASE" conf="compile->default"/>
-		<dependency org="org.springframework" name="spring-context" rev="4.2.4.RELEASE" conf="compile->default"/>
-		<dependency org="org.springframework" name="spring-core" rev="4.2.4.RELEASE" conf="compile->default"/>
-		<dependency org="org.springframework" name="spring-tx" rev="4.2.4.RELEASE" conf="compile->default"/>
-		<dependency org="org.springframework" name="spring-web" rev="4.2.4.RELEASE" conf="compile->default"/>
-		<dependency org="org.springframework" name="spring-webmvc" rev="4.2.4.RELEASE" conf="compile->default"/>
-	</dependencies>
+
+    <dependencies>
+        <dependency org="org.slf4j" name="slf4j-api" rev="1.7.10" conf="compile->default"/>
+        <dependency org="ch.qos.logback" name="logback-classic" rev="1.1.2" conf="compile->default"/>
+        <dependency org="com.fasterxml.jackson.core" name="jackson-core" rev="2.7.1" conf="compile->default"/>
+        <dependency org="com.fasterxml.jackson.core" name="jackson-annotations" rev="2.7.1" conf="compile->default"/>
+        <dependency org="com.fasterxml.jackson.core" name="jackson-databind" rev="2.7.1-1" conf="compile->default"/>
+        <dependency org="javax.servlet" name="javax.servlet-api" rev="3.0.1" conf="compile->default"/>
+        <dependency org="javax.servlet.jsp" name="jsp-api" rev="2.1" conf="compile->default"/>
+        <dependency org="mysql" name="mysql-connector-java" rev="5.1.38" conf="compile->default"/>
+        <dependency org="org.springframework" name="spring-beans" rev="4.2.4.RELEASE" conf="compile->default"/>
+        <dependency org="org.springframework" name="spring-context" rev="4.2.4.RELEASE" conf="compile->default"/>
+        <dependency org="org.springframework" name="spring-core" rev="4.2.4.RELEASE" conf="compile->default"/>
+        <dependency org="org.springframework.security" name="spring-security-core" rev="4.0.3.RELEASE"
+                    conf="compile->default"/>
+        <dependency org="org.springframework.security" name="spring-security-config" rev="4.0.3.RELEASE"
+                    conf="compile->default"/>
+        <dependency org="org.springframework.security" name="spring-security-web" rev="4.0.3.RELEASE"
+                    conf="compile->default"/>
+        <dependency org="org.springframework.security" name="spring-security-taglibs" rev="4.0.3.RELEASE"
+                    conf="compile->default"/>
+        <dependency org="jstl" name="jstl" rev="1.2" conf="compile->default"/>
+        <dependency org="org.springframework" name="spring-jdbc" rev="4.2.4.RELEASE" conf="compile->default"/>
+        <dependency org="org.springframework" name="spring-tx" rev="4.2.4.RELEASE" conf="compile->default"/>
+        <dependency org="org.springframework" name="spring-web" rev="4.2.4.RELEASE" conf="compile->default"/>
+        <dependency org="org.springframework" name="spring-webmvc" rev="4.2.4.RELEASE" conf="compile->default"/>
+    </dependencies>
 </ivy-module>
